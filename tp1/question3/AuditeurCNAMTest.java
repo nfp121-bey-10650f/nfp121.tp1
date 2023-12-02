@@ -41,9 +41,10 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
      * 
      * Méthode appelée avant chaque appel de méthode de test.
      */
-    protected void setUp() // throws java.lang.Exception
+    protected void setUp() throws Exception
     {
         // Initialisez ici vos engagements
+        System.out.println("Setting it up!");
     }
 
     /**
@@ -51,9 +52,10 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
      * 
      * Méthode appelée après chaque appel de méthode de test.
      */
-    protected void tearDown() // throws java.lang.Exception
+    protected void tearDown() throws Exception
     {
         // Libérez ici les ressources engagées par setUp()
+        System.out.println("Running: tearDown");
     }
 
     /*
@@ -69,6 +71,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Dupont",
                 "paul", "03-1234");
         assertEquals("Dupont paul login : dupont_p", auditeur1.toString());
+        System.out.println("Running: test_toString ");
     }
 
     public void test_nom_court() {
@@ -77,6 +80,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("paul", auditeur1.nom());
         assertEquals("pierre", auditeur1.prenom());
         assertEquals("paul_p", auditeur1.login());
+        System.out.println("Running: test_nom_court ");
     }
 
     public void test_nom_court_bis() {
@@ -85,6 +89,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("Mr thon germon", "thon", auditeur1.nom());
         assertEquals("Mr thon germon", "germon", auditeur1.prenom());
         assertEquals("Mr thon germon", "thon_g", auditeur1.login());
+        System.out.println("Running: test_nom_court_bis ");
     }
 
     public void test_nom_avec_particule() {
@@ -94,6 +99,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("Mr le Thon albacore ", "alban", auditeur1.prenom());
         assertEquals(" matricule ?", "12345", auditeur1.matricule());
         assertEquals(" login ? ", "le_tho_a", auditeur1.login());
+        System.out.println("Running: test_nom_avec_particule() ");
     }
 
     public void test_nom_compose() {
@@ -102,6 +108,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("Mr Ton-Ton max ", "Ton-Ton", auditeur1.nom());
         assertEquals("Mr Ton-Ton max ", "max", auditeur1.prenom());
         assertEquals("Mr Ton-Ton max ", "ton_to_m", auditeur1.login());
+        System.out.println("Running: test_nom_compose ");
     }
 
     public void test_nom_court_avec_particule() {
@@ -112,6 +119,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("Mr Te-Te max ", "max", auditeur1.prenom());
         assertEquals("nom court avec particules ? ", "te_te_m",
             auditeur1.login());
+        System.out.println("Running: test_nom_court_avec_particule ");
     }
 
     public void test_nom_avec_accent() {
@@ -121,5 +129,26 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("Mme Chloé chloé ", "chloé", auditeur1.prenom());
         assertEquals(" nom avec accent (é devient e) ? ", "chloe_c",
             auditeur1.login());
+        System.out.println("Running: test_nom_avec_accent ");
+    }
+    
+   /* public void test_pour_un_caractere() {
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Mari@m",
+                "Daher", "10650f");
+        assertEquals(" Mariam Daher ", "Mari@m", auditeur1.nom());
+        assertEquals(" Mariam Daher", "Daher", auditeur1.prenom());
+        assertEquals(" nom avec caractere (@ devient _) ? ", "mari_m_d",
+            auditeur1.login());
+        System.out.println("Running: test_pour_un_caractere ");
+    }*/
+    
+    public void test_pour_un_caractere() {
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Lin@",
+                "Hallal", "10650f");
+        assertEquals(" Lina Hallal ", "Lin@", auditeur1.nom());
+        assertEquals(" Lina Hallal", "Daher", auditeur1.prenom());
+        assertEquals(" nom avec caractere (@ devient _) ? ", "lin__h",
+            auditeur1.login());
+        System.out.println("Running: test_pour_un_caractere ");
     }
 }
